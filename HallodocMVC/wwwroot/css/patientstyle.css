@@ -1,0 +1,62 @@
+.indexdivgrp{
+    top: 12vh;
+}
+@media only screen and (max-height: 750px) {
+    .indexdivgrp{
+        top: 6vh;
+    }
+}
+.indexcontainer{
+    height: 100vh;
+}
+.bodybg {
+    background: linear-gradient(rgba(255,255,255,.60), rgba(255,255,255,.60)), url('../images/11116016_415.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: contain;
+    backdrop-filter: blur(5px);
+}
+.logindivgrp{
+    top: 12vh;
+}
+@media only screen and (max-height: 750px) {
+    .logindivgrp{
+        top: 2vh;
+    }
+}
+.logincontainer{
+    height: 100vh;
+}
+
+.back{
+    font-family: 'Poppins', sans-serif;
+}
+.form-floating .form-control:focus~label{
+    color: #0dcaf0;
+}
+.form-floating input:focus{
+    border: 2px solid #0dcaf0;
+}
+.fa-eye
+{
+    display: block;
+}
+.fa-eye-slash
+{
+    display: none;
+    height: 16px;
+    width: 16px;
+}
+.password button, .email button
+{
+    position: absolute;
+    right: 0.8rem;
+    top: 1rem;
+    padding: 3px;
+    padding-right: 3px;
+    border: 0;
+}
+.eyehide::-ms-reveal,.eyehide::-ms-clear {
+        display: none;
+      }

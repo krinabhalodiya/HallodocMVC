@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PatientDashboard</title>
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/patientstyle.css">
+</head>
+
+<body class="bodybg">
+    <div class="position-relative">
+        <button class="position-absolute top-0 end-0 btn btn-outline-info p-2 m-3">
+            <i class="fa fa-moon-o fa-2x text-info"></i>
+        </button>
+    </div>
+
+    <div class="container indexcontainer">
+        <div class="row mx-6">
+            <div class="col-12 text-center">
+                <img src="~/images/Fig56._Patient_site_1.png">
+            </div>
+        </div>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+        <div class="row">
+            <div class="col-12 text-center fixed-bottom pb-5">
+                <a href=" " class="text-secondary text-decoration-none">
+                    <small class="text-body-secondary">
+                        Terms of Conditions
+                    </small>
+                </a>&nbsp;&nbsp;|&nbsp;&nbsp;
+                <a href=" " class="text-secondary text-decoration-none">
+                    <small class="text-body-secondary">
+                        Privacy Policy
+                    </small>
+                </a>
+            </div>
+        </div>
+    </div>
+    <script src="~/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

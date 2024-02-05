@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewData["Title"] = "Forgotpass";
+}
+
+<div class="logindivgrp position-relative">
+    <div class="row my-4">
+        <div class="col-xl-4 col-md-8 maindiv mx-auto">
+            <a class="text-decoration-none text-info h6 back" asp-controller="Home" asp-action="Login">
+                <i class="fa fa-angle-left fa-2x text-info align-middle"></i>
+                <span class="align-middle"><b class="align-text-top">&nbsp;&nbsp;Back</b></span>
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xl-12 text-center">
+            <h1>Reset Your Password</h1>
+        </div>
+    </div>
+    <div class="row my-4">
+        <div class="col-xl-4 col-md-8 maindiv mx-auto">
+            <form class="form-floating email">
+                <input type="text" class="form-control shadow-none" id="floatingInputValue" placeholder="Username">
+                <label for="floatingInputValue colour-info">Username</label>
+                <button class="btn btn-light">
+                    <i class='fa fa-user-circle field-icon position-relative'></i>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div class="row my-4">
+        <div class="col-xl-4 col-md-8 maindiv mx-auto">
+            <button class="form-control btn btn-info text-light">Reset Password</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 text-center">
+            <b>
+                <a class="text-decoration-none text-info h6 back" asp-controller="Home" asp-action="Login">
+                    <i class="fa fa-angle-left fa-2x text-info align-middle"></i>
+                    <span class="align-middle"><b class="align-text-top">&nbsp;&nbsp;Back to Login</b></span>
+                </a>
+            </b>
+        </div>
+    </div>
+</div>
+
