@@ -1,4 +1,6 @@
 ﻿
+@model HallodocMVC.DataModels.AspNetUser;
+
 @{
     ViewData["Title"] = "login";
 }
@@ -17,34 +19,36 @@
             <h1>Login To Your Account</h1>
         </div>
     </div>
-    <div class="row my-4">
-        <div class="col-xl-4 col-md-8 maindiv mx-auto">
-            <form class="form-floating email">
-                <input type="email" class="form-control shadow-none" id="floatingInputValue" placeholder="name@example.com">
-                <label for="floatingInputValue colour-info">Email</label>
-                <button class="btn btn-light">
-                    <i class='fa fa-user-circle field-icon position-relative'></i>
-                </button>
-            </form>
+    <form asp-controller="AspNetUsers" asp-action="Login">
+        <div class="row my-4">
+            <div class="col-xl-4 col-md-8 maindiv mx-auto">
+                <div class="form-floating email">
+                    <input asp-for="Email" type="email" class="form-control shadow-none" id="floatingInputValue" placeholder="name@example.com">
+                    <label for="floatingInputValue colour-info">Email</label>
+                    <button class="btn btn-light">
+                        <i class='fa fa-user-circle field-icon position-relative'></i>
+                    </button>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-xl-4 col-md-8 maindiv mx-auto">
-            <form class="form-floating password">
-                <input type="password" class="form-control shadow-none eyehide" id="floatingPassword" placeholder="name@example.com">
-                <label for="floatingPassword colour-info">Password</label>
-                <button type="button" class="btn btn-light" onclick="passtoggle()">
-                    <i class="showImg fa fa-eye"></i>
-                    <i class="fa fa-eye-slash"></i>
-                </button>
-            </form>
+        <div class="row">
+            <div class="col-xl-4 col-md-8 maindiv mx-auto">
+                <div class="form-floating password">
+                    <input asp-for="PasswordHash" type="password" class="form-control shadow-none eyehide" id="floatingPassword" placeholder="name@example.com">
+                    <label for="floatingPassword colour-info">Password</label>
+                    <button type="button" class="btn btn-light" onclick="passtoggle()">
+                        <i class="showImg fa fa-eye"></i>
+                        <i class="fa fa-eye-slash"></i>
+                    </button>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="row my-4">
-        <div class="col-xl-4 col-md-8 maindiv mx-auto">
-            <button class="form-control btn btn-info text-light">Log in</button>
+        <div class="row my-4">
+            <div class="col-xl-4 col-md-8 maindiv mx-auto">
+                <button type="Submit" class="form-control btn btn-info text-light">Log in</button>
+            </div>
         </div>
-    </div>
+    </form>
     <div class="row">
         <div class="col-12 text-center">
             <b><a asp-controller="Home" asp-action="Forgotpass" class="text-decoration-none text-info">Forgot Password?</a></b>
