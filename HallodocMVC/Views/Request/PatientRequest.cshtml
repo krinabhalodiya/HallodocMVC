@@ -2,7 +2,7 @@
 @{
     ViewData["Title"] = "PatientRequest";
 }
-
+@model ViewDataPatientRequest
 <div class="container">
     <div class="position-relative">
         <div class="row">
@@ -16,135 +16,140 @@
             </div>
         </div>
         <!-- form -->
-        <div class="divgrpreq mx-xl-4 mx-md-3 mx-sm-2 bg-white rounded">
+        <form class="form-floating" method="post" asp-action="Create" asp-controller="PatientRequest">
+            <div class="divgrpreq mx-xl-4 mx-md-3 mx-sm-2 bg-white rounded">
 
-            <!-- patient Information -->
-            <div class="row p-3">
-                <div class="col-12">
-                    <h5><b class="">Patient Information</b></h5>
-                </div>
-            </div>
-            <div class="row p-3">
-                <div class="col-12">
-                    <div class="form-floating">
-                        <textarea class="w-100 form-control txtarea shadow-none" id="floatingInputValue"></textarea>
-                        <label for="floatingInputValue">Enter Brief Details Of Symptoms(Optional)</label>
+                <!-- patient Information -->
+                <div class="row p-3">
+                    <div class="col-12">
+                        <h5><b class="">Patient Information</b></h5>
                     </div>
                 </div>
-            </div>
-            <div class="row px-3">
-                <div class="col-md-6 pb-3">
-                    <form class="form-floating">
-                        <input type="text" class="form-control shadow-none" id="fname" placeholder="First Name">
-                        <label for="fname">First Name</label>
-                    </form>
-                </div>
-                <div class="col-md-6 pb-3">
-                    <form class="form-floating">
-                        <input type="text" class="form-control shadow-none" id="lname" placeholder="Last Name">
-                        <label for="lname">Last Name</label>
-                    </form>
-                </div>
-                <div class="col-md-6 pb-3">
-                    <form class="form-floating">
-                        <input type="date" class="form-control shadow-none" id="dob" placeholder="Date Of Birth">
-                        <label for="dob">Date Of Birth</label>
-                    </form>
-                </div>
-            </div>
-
-            <!-- Patient contact Information -->
-            <div class="row p-3">
-                <div class="col-12">
-                    <h5><b>Patient Contact Information</b></h5>
-                </div>
-            </div>
-            <div class="row px-3">
-                <div class="col-md-6">
-                    <form class="form-floating pb-3">
-                        <input type="text" class="form-control shadow-none" id="email" placeholder="Email">
-                        <label for="email">Email</label>
-                    </form>
-                </div>
-                <div class="col-md-6 phone">
-                    <form class="form-floating">
-                        <input type="number" class="form-control shadow-none" id="phone">
-                    </form>
-                </div>
-            </div>
-
-            <!-- Patient Location -->
-            <div class="row p-3">
-                <div class="col-12">
-                    <h5><b>Patient Location</b></h5>
-                </div>
-            </div>
-            <div class="row px-3">
-                <div class="col-md-6 pb-3">
-                    <form class="form-floating">
-                        <input type="text" class="form-control shadow-none" id="fname" placeholder="First Name">
-                        <label for="fname">Street</label>
-                    </form>
-                </div>
-                <div class="col-md-6 pb-3">
-                    <form class="form-floating">
-                        <input type="text" class="form-control shadow-none" id="lname" placeholder="Last Name">
-                        <label for="lname">City</label>
-                    </form>
-                </div>
-                <div class="col-md-6 pb-3">
-                    <form class="form-floating">
-                        <input type="text" class="form-control shadow-none" id="lname" placeholder="Last Name">
-                        <label for="lname">State</label>
-                    </form>
-                </div>
-                <div class="col-md-6 pb-3">
-                    <form class="form-floating">
-                        <input type="text" class="form-control shadow-none" id="lname" placeholder="Last Name">
-                        <label for="lname">Zip Code</label>
-                    </form>
-                </div>
-                <div class="col-md-6">
-                    <form class="form-floating">
-                        <input type="text" class="form-control shadow-none" id="lname" placeholder="Last Name">
-                        <label for="lname">Room # / Suits (Optional)</label>
-                    </form>
-                </div>
-            </div>
-
-            <!-- Upload Files -->
-            <div class="row p-3">
-                <div class="col-12">
-                    <h5><b>(Optional) Upload Photo or Document</b></h5>
-                </div>
-            </div>
-            <div class="row px-3 pb-3">
-                <div>
-                    <div class="col-12 border rounded">
-                        <div class="d-flex justify-content-between">
-                            <span id="choosenfile" class="p-3">No file chosen</span>
-                            <button class="bg-info btn btn-lg" onclick="document.getElementById('choosenfile').click()">
-                                <label for="files" class="btn text-white">
-                                    <i class="fa fa-cloud-upload"></i>
-                                    Upload
-                                </label>
-                            </button>
-                            <input id="files" type="file" class="d-none">
+                <div class="row p-3">
+                    <div class="col-12">
+                        <div class="form-floating">
+                            <textarea class="w-100 form-control txtarea shadow-none" id="floatingInputValue"></textarea>
+                            <label for="floatingInputValue">Enter Brief Details Of Symptoms(Optional)</label>
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- cancel submit button -->
-            <div class="row px-3 py-3">
-                <div class="col-12 d-flex justify-content-end">
-                    <button type="button" class="btn btn-info btn-md text-white mx-3">Submit</button>
-                    <button type="reset" class="btn btn-white btn-md text-info border border-info">Cancel</button>
+                <div class="row px-3">
+                    <div class="col-md-6 pb-3">
+                        <div class="form-floating">
+                            <input type="text" class="form-control shadow-none" id="fname" placeholder="First Name">
+                            <label for="fname">First Name</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6 pb-3">
+                        <div class="form-floating">
+                            <input type="text" class="form-control shadow-none" id="lname" placeholder="Last Name">
+                            <label for="lname">Last Name</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6 pb-3">
+                        <div class="form-floating">
+                            <input type="date" class="form-control shadow-none" id="dob" placeholder="Date Of Birth">
+                            <label for="dob">Date Of Birth</label>
+                        </div>
+                    </div>
                 </div>
+
+                <!-- Patient contact Information -->
+                <div class="row p-3">
+                    <div class="col-12">
+                        <h5><b>Patient Contact Information</b></h5>
+                    </div>
+                </div>
+                <div class="row px-3">
+                    <div class="col-md-6">
+                        <div class="form-floating pb-3">
+                            <input type="text" class="form-control shadow-none" id="email" placeholder="Email">
+                            <label for="email">Email</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6 phone">
+                        <div class="form-floating">
+                            <input type="number" class="form-control shadow-none" id="phone">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Patient Location -->
+                <div class="row p-3">
+                    <div class="col-12">
+                        <h5><b>Patient Location</b></h5>
+                    </div>
+                </div>
+                <div class="row px-3">
+                    <div class="col-md-6 pb-3">
+                        <div class="form-floating">
+                            <input type="text" class="form-control shadow-none" id="fname" placeholder="First Name">
+                            <label for="fname">Street</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6 pb-3">
+                        <div class="form-floating">
+                            <input type="text" class="form-control shadow-none" id="lname" placeholder="Last Name">
+                            <label for="lname">City</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6 pb-3">
+                        <div class="form-floating">
+                            <input type="text" class="form-control shadow-none" id="lname" placeholder="Last Name">
+                            <label for="lname">State</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6 pb-3">
+                        <div class="form-floating">
+                            <input type="text" class="form-control shadow-none" id="lname" placeholder="Last Name">
+                            <label for="lname">Zip Code</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating">
+                            <input type="text" class="form-control shadow-none" id="lname" placeholder="Last Name">
+                            <label for="lname">Room # / Suits (Optional)</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Upload Files -->
+                <div class="row p-3">
+                    <div class="col-12">
+                        <h5><b>(Optional) Upload Photo or Document</b></h5>
+                    </div>
+                </div>
+                <div class="row px-3 pb-3">
+                    <div>
+                        <div class="col-12 border rounded">
+                            <div class="d-flex justify-content-between">
+                                <span id="choosenfile" class="p-3">No file chosen</span>
+                                <button class="bg-info btn btn-lg" onclick="document.getElementById('choosenfile').click()">
+                                    <span for="files" class="btn text-white">
+                                        <i class="fa fa-cloud-upload"></i>
+                                        Upload
+                                    </span>
+                                </button>
+                                <input id="files" type="file" class="d-none">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- cancel submit button -->
+                <div class="row px-3 py-3">
+                    <div class="col-12 d-flex justify-content-end">
+                        <button type="button" class="btn btn-info btn-md text-white mx-3">Submit</button>
+                        <button type="reset" class="btn btn-white btn-md text-info border border-info">Cancel</button>
+                    </div>
+                </div>
+                <!-- form end -->
             </div>
+        </form>
             <!-- form end -->
-        </div>
     </div>
 </div>
+  
+
 
 <script src="~/js/custom.js"></script>
