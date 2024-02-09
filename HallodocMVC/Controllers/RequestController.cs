@@ -8,10 +8,6 @@ namespace HallodocMVC.Controllers
         {
             return View();
         }
-        public IActionResult PatientRequest()
-        {
-            return View();
-        }
         public IActionResult FamilyFriendRequest()
         {
             return View();
