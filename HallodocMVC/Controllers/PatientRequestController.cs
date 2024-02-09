@@ -23,6 +23,27 @@ namespace HallodocMVC.Controllers
             return View("../Request/PatientRequest");
         }
 
+        [HttpPost]
+        public async Task<IActionResult> CheckEmailAsync(string email)
+        {
+            string message;
+            var aspnetuser = await _context.Aspnetusers.FirstOrDefaultAsync(m => m.Email == email);
+            if (aspnetuser == null)
+            {
+                message = "False";
+
+            }
+            else
+            {
+                message = "success";
+                
+            }
+            return Json(new
+            {
+                Message = message,
+            });
+        }
+
 
         public async Task<IActionResult> Create(ViewDataPatientRequest viewpatientcreaterequest)
         {
@@ -40,6 +61,7 @@ namespace HallodocMVC.Controllers
                 Aspnetuser.Username = viewpatientcreaterequest.FirstName;
                 Aspnetuser.Passwordhash = viewpatientcreaterequest.LastName;
                 Aspnetuser.CreatedDate = DateTime.Now;
+                Aspnetuser.Email = viewpatientcreaterequest.Email;
                 _context.Aspnetusers.Add(Aspnetuser);
                 await _context.SaveChangesAsync();
 

@@ -40,7 +40,7 @@
                             <label for="lname">Your Last Name</label>
                         </div>
                     </div>
-                    <div class="col-md-6 phone">
+                    <div class="col-md-6 phone pb-3">
                         <span class="form-floating">
                             <input asp-for="FF_PhoneNumber" type="number" class="form-control shadow-none" id="phone">
                         </span>
@@ -74,8 +74,8 @@
                     </div>
                 </div>
                 <div class="row px-3">
-                    <div class="col-md-6 pb-3">
-                        <div class="form-floating">
+                    <div class="col-md-6">
+                        <div class="form-floating pb-3">
                             <input asp-for="FirstName" type="text" class="form-control shadow-none" id="fname" placeholder="First Name">
                             <label for="fname">First Name</label>
                         </div>
@@ -101,13 +101,13 @@
                     </div>
                 </div>
                 <div class="row px-3">
-                    <div class="col-md-6">
-                        <div class="form-floating pb-3">
+                    <div class="col-md-6 pb-3">
+                        <div class="form-floating">
                             <input asp-for="Email" type="text" class="form-control shadow-none" id="email" placeholder="Email">
                             <label for="email">Email</label>
                         </div>
                     </div>
-                    <div class="col-md-6 phone">
+                    <div class="col phone">
                         <div class="form-floating">
                             <input asp-for="PhoneNumber" type="number" class="form-control shadow-none" id="phone1">
                         </div>
@@ -115,7 +115,7 @@
                 </div>
 
                 <!-- Patient Location -->
-                <div class="row p-3">
+                <div class="row p-3 pb-3">
                     <div class="col-12">
                         <h5><b>Patient Location</b></h5>
                     </div>
@@ -164,12 +164,12 @@
                         <div class="col-12 border rounded">
                             <div class="d-flex justify-content-between">
                                 <span id="choosenfile" class="p-3">No file chosen</span>
-                                <button class="bg-info btn btn-lg" onclick="document.getElementById('choosenfile').click()">
+                                <a class="bg-info btn btn-lg" onclick="document.getElementById('choosenfile').click()">
                                     <label for="files" class="btn text-white">
                                         <i class="fa fa-cloud-upload"></i>
                                         Upload
                                     </label>
-                                </button>
+                                </a>
                                 <input asp-for="UploadFile" id="files" type="file" class="d-none">
                             </div>
                         </div>
@@ -179,7 +179,7 @@
                 <!-- cancel submit button -->
                 <div class="row px-3 py-3">
                     <div class="col-12 d-flex justify-content-end">
-                        <button type="submit" class="btn btn-info btn-md text-white mx-3">Submit</button>
+                        @* <input value="Submit" type="submit" class="btn btn-info btn-md text-white mx-3"> *@
                         <button type="reset" class="btn btn-white btn-md text-info border border-info">Cancel</button>
                     </div>
                 </div>
