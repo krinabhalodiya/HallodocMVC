@@ -53,6 +53,7 @@ namespace HallodocMVC.Controllers
                 await _context.SaveChangesAsync();
 
                 Request.Requesttypeid = 2;
+                Request.Status = 1;
                 Request.Userid = User.Userid;
                 Request.Firstname = viewpatientcreaterequest.FirstName;
                 Request.Lastname = viewpatientcreaterequest.LastName;
