@@ -69,6 +69,7 @@ namespace HallodocMVC.Controllers
                 Requestclient.Lastname = viewpatientcreaterequest.LastName;
                 Requestclient.Email = viewpatientcreaterequest.Email;
                 Requestclient.Phonenumber = viewpatientcreaterequest.PhoneNumber;
+                Requestclient.Notes = viewpatientcreaterequest.Symptoms;
 
                 _context.Requestclients.Add(Requestclient);
                 await _context.SaveChangesAsync();
