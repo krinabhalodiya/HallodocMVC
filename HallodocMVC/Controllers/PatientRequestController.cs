@@ -102,7 +102,35 @@ namespace HallodocMVC.Controllers
 
                 _context.Requestclients.Add(Requestclient);
                 await _context.SaveChangesAsync();
-                return View("../Request/Index");
+
+            if (viewpatientcreaterequest.UploadFile != null)
+            {
+                string FilePath = "wwwroot\\Upload";
+                string path = Path.Combine(Directory.GetCurrentDirectory(), FilePath);
+
+                if (!Directory.Exists(path))
+                    Directory.CreateDirectory(path);
+
+                string fileNameWithPath = Path.Combine(path, viewpatientcreaterequest.UploadFile.FileName);
+                viewpatientcreaterequest.UploadImage = "~" + FilePath.Replace("wwwroot\\", "/") + "/" + viewpatientcreaterequest.UploadFile.FileName;
+
+                using (var stream = new FileStream(fileNameWithPath, FileMode.Create))
+                {
+                    viewpatientcreaterequest.UploadFile.CopyTo(stream);
+                }
+
+                var requestwisefile = new Requestwisefile
+                {
+                    Requestid = Request.Requestid,
+                    Filename = viewpatientcreaterequest.UploadImage,
+                    Createddate = DateTime.Now,
+                };
+                _context.Requestwisefiles.Add(requestwisefile);
+                _context.SaveChanges();
+            }
+
+
+            return View("../Request/Index");
             //}
 
         }

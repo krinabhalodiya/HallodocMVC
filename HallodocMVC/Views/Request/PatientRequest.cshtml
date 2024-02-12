@@ -17,7 +17,8 @@
             </div>
         </div>
         <!-- form -->
-        <form class="form-floating" method="post" asp-action="Create" asp-controller="PatientRequest">
+        <form class="form-floating" method="post" asp-action="Create" asp-controller="PatientRequest" enctype="multipart/form-data">
+
             <div class="divgrpreq mx-xl-4 mx-md-3 mx-sm-2 bg-white rounded">
 
                 <!-- patient Information -->
@@ -141,13 +142,13 @@
                         <div class="col-12 border rounded">
                             <div class="d-flex justify-content-between">
                                 <span id="choosenfile" class="p-3">No file chosen</span>
-                                <button type="button" class="btn bg-info btn btn-lg" onclick="document.getElementById('choosenfile').click()">
+                                <a class="btn bg-info btn btn-lg" onclick="document.getElementById('files').click()">
                                     <span for="files" class="btn text-white">
                                         <i class="fa fa-cloud-upload"></i>
                                         Upload
                                     </span>
-                                </button>
-                                <input id="files" type="file" class="d-none">
+                                </a>
+                                <input asp-for="UploadFile" id="files" type="file" class="d-none">
                             </div>
                         </div>
                     </div>

@@ -15,7 +15,7 @@ namespace HallodocMVC.Controllers
 
                 if (filterContext.HttpContext.Session.GetString("UserID") == null)
                 {
-                    filterContext.Result = new RedirectResult("~/Login/");
+                    filterContext.Result = new RedirectResult("../Home/Login/");
                 }
             }
 

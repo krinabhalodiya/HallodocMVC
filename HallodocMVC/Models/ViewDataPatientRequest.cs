@@ -16,5 +16,8 @@
         public string State { get; set; }
         public string ZipCode { get; set; }
         public string RoomSite { get; set; }
+        public string? UploadImage { get; set; }
+        public IFormFile? UploadFile { get; set; }
+
     }
 }
