@@ -31,16 +31,14 @@ namespace HallodocMVC.Controllers
             if (aspnetuser == null)
             {
                 message = "False";
-
             }
             else
             {
-                message = "success";
-                
+                message = "Success";
             }
             return Json(new
             {
-                Message = message,
+                isAspnetuser = aspnetuser == null
             });
         }
 
@@ -51,11 +49,11 @@ namespace HallodocMVC.Controllers
             var User = new User();
             var Request = new Request();
             var Requestclient = new Requestclient();
+            var isexist = _context.Users.FirstOrDefault(x => x.Email == viewpatientcreaterequest.Email);
 
-
-            //if (viewpatientcreaterequest.UserName != null && viewpatientcreaterequest.PassWord != null)
-            //{
-            // Aspnetuser
+            if (isexist == null)
+            {
+                // Aspnetuser
                 Guid g = Guid.NewGuid();
                 Aspnetuser.Id = g.ToString();
                 Aspnetuser.Username = viewpatientcreaterequest.FirstName;
@@ -73,10 +71,18 @@ namespace HallodocMVC.Controllers
                 User.Createddate = DateTime.Now;
                 _context.Users.Add(User);
                 await _context.SaveChangesAsync();
+            }
 
                 Request.Requesttypeid = 2;
                 Request.Status = 1;
+
+            if (isexist == null)
+            {
                 Request.Userid = User.Userid;
+            }else
+            {
+                Request.Userid = isexist.Userid;
+            }
                 Request.Firstname = viewpatientcreaterequest.FirstName;
                 Request.Lastname = viewpatientcreaterequest.LastName;
                 Request.Email = viewpatientcreaterequest.Email;

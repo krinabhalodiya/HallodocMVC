@@ -15,7 +15,7 @@ namespace HallodocMVC.Controllers
         }
         public IActionResult Index()
         {
-            return View();
+            return View("../Request/ConciergeRequest");
         }
         public async Task<IActionResult> Create(ViewDataConceirgeRequest viewdata)
         {

@@ -4,7 +4,6 @@
 @{
     ViewData["Title"] = "login";
 }
-
 <div class="logindivgrp position-relative">
     <div class="row my-4">
         <div class="col-xl-4 col-md-8 maindiv mx-auto">
@@ -19,11 +18,12 @@
             <h1>Login To Your Account</h1>
         </div>
     </div>
-    <form  >
+    @ViewData["error"]
+    <form asp-action="Validate" asp-controller="Login" method="post">
         <div class="row my-4">
             <div class="col-xl-4 col-md-8 maindiv mx-auto">
                 <div class="form-floating email">
-                    <input  type="email" class="form-control shadow-none" id="floatingInputValue" placeholder="name@example.com">
+                    <input type="email" class="form-control shadow-none" id="floatingInputValue" name="Email" placeholder="name@example.com">
                     <label for="floatingInputValue colour-info">Email</label>
                     <button class="btn btn-light">
                         <i class='fa fa-user-circle field-icon position-relative'></i>
@@ -34,7 +34,7 @@
         <div class="row">
             <div class="col-xl-4 col-md-8 maindiv mx-auto">
                 <div class="form-floating password">
-                    <input  type="password" class="form-control shadow-none eyehide" id="floatingPassword" placeholder="name@example.com">
+                    <input type="password" class="form-control shadow-none eyehide" id="floatingPassword" name="Passwordhash" placeholder="name@example.com">
                     <label for="floatingPassword colour-info">Password</label>
                     <button type="button" class="btn btn-light" onclick="passtoggle()">
                         <i class="showImg fa fa-eye"></i>

@@ -8,14 +8,5 @@ namespace HallodocMVC.Controllers
         {
             return View();
         }
-        public IActionResult BusinessRequest()
-        {
-            return View();
-        }
-        public IActionResult ConciergeRequest()
-        {
-            return View();
-        }
     }
-        
 }

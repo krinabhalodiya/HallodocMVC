@@ -69,7 +69,7 @@
                         </div>
                     </div>
                     <div class="col-md-6 phone">
-                        <div class="form-floating">
+                        <div class="form-floating pb-3">
                             <input asp-for="PhoneNumber" type="number" class="form-control shadow-none" id="phone">
                         </div>
                     </div>
@@ -178,9 +178,7 @@
                     url: '@Url.Action("CheckEmail")?email=' + email,
                     cache: false,
                     success: function (response) {
-                        var flag = response.message == 'False';
-                        var userId = response.data;
-                        console.log(response);
+                    var flag = response.isAspnetuser;
                         if (flag) {
                             // Show the username and password fields
                             $("#username").show();
