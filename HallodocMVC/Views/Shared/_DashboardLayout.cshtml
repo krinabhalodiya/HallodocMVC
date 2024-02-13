@@ -15,7 +15,7 @@
         <nav class="navbar px-5 border-2 border-bottom navbar-expand-lg bg-white align-center">
             <div class="container-fluid">
                 <div class="start-0 btn p-2 mx-3 my-auto">
-                    <img src="../images/Fig56._Patient_site_1.png" class="header-img">
+                    <img src="~/images/Fig56._Patient_site_1.png" class="header-img">
                 </div>
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 </ul>
@@ -34,10 +34,10 @@
         <partial name="../_PartialViews/SubNav" />
     </header>
 
-    <main role="main" class="pb-3 container">
+    <main role="main" class="pb-3 container-fluid px-5">
         @RenderBody()
     </main>
-    <footer class="fixed-bottom">
+    @* <footer class="fixed-bottom">
         <div class=" justify-content-end position-static  w-100 align-self-end d-flex left-0 bg-dark text-light px-2 align-items-end  bottom-0 py-3 fs-7 align-text-bottom align-items-end">
             <div class="text-center">
 
@@ -52,9 +52,10 @@
                 </span>
             </div>
         </div>
-    </footer>
+    </footer> *@
     <script src="~/js/custom.js" asp-append-version="true"></script>
-    <script src="~/js/main.js" asp-append-version="true"></script>
+    <script src="~/js/bootstrap.bundle.min.js" asp-append-version="true"></script>
+
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>@*
