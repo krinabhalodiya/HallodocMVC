@@ -1,3 +1,10 @@
+.hdr {
+    box-shadow: 0 0 10px 0;
+}
+
+.header-img {
+    height: 70px;
+}
 .divgrpsubreq{
     top: 5vh;
 }

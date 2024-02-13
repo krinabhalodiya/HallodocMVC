@@ -2,7 +2,6 @@
     Layout = "_DashboardLayout";
 }
 
-
 @using Microsoft.AspNetCore.Http
 @inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
 
@@ -12,22 +11,20 @@
 
 <div class="justify-content-between d-flex container-fluid mt-5 position-relative ">
     <div class="">
-        <h3 class="fw-bolder">
-            Medical History @userId
-
-        </h3>
+        <h4 class="fw-bolder">
+            Medical History
+        </h4>
     </div>
 </div>
-<div class="card border-0 shadow py-4 mb-5 mx-3 mt-3 rounded">
+<div class="card border-0 shadow pt-4 mb-5 mx-3 mt-3 rounded">
     <div class="text-end mx-2 px-3">
         <!-- Button trigger modal -->
         <button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#create_new">
-            Create New
-            Request
+            Create New Request
         </button>
     </div>
     <div class="table-responsive">
-        <table class="table table-responsive mt-3 p-3">
+        <table class="table table-responsive mt-3 pt-3 mb-0">
             <thead>
                 <tr>
                     <th scope="col">Created Date <i class="bi bi-arrow-down"></i></th>
@@ -45,7 +42,7 @@
                             @{
                                 if (ViewBag.docidlist.Contains(item.Requestid))
                                 {
-                                    <a asp-action="Index" asp-controller="Documentsinfo" asp-route-id="@item.Requestid" class="btn btn-outline-info btn-sm document-button">
+                                    <a asp-action="DocumentInfo" asp-controller="Dashboard" asp-route-id="@item.Requestid" class="btn btn-outline-info btn-sm document-button">
                                         Document
                                         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor"
                                              class="bi bi-arrow-down-circle mx-1" viewBox="0 0 16 16">
@@ -57,6 +54,7 @@
                             }
                         </td>
                     </tr>
+                    
                 }
             </tbody>
         </table>

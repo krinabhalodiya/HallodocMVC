@@ -55,7 +55,7 @@ namespace HallodocMVC.Controllers
                 // Aspnetuser
                 Guid g = Guid.NewGuid();
                 Aspnetuser.Id = g.ToString();
-                Aspnetuser.Username = viewpatientcreaterequest.FirstName;
+                Aspnetuser.Username = viewpatientcreaterequest.Email;
                 Aspnetuser.Passwordhash = viewpatientcreaterequest.LastName;
                 Aspnetuser.CreatedDate = DateTime.Now;
                 Aspnetuser.Email = viewpatientcreaterequest.Email;
@@ -122,7 +122,7 @@ namespace HallodocMVC.Controllers
                 var requestwisefile = new Requestwisefile
                 {
                     Requestid = Request.Requestid,
-                    Filename = viewpatientcreaterequest.UploadImage,
+                    Filename = viewpatientcreaterequest.UploadFile.FileName,
                     Createddate = DateTime.Now,
                 };
                 _context.Requestwisefiles.Add(requestwisefile);

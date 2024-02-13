@@ -5,40 +5,35 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - HelloDoc</title>
-    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     <link href="~/css/bootstrap.min.css" rel="stylesheet" type="text/css" asp-append-version="true" />
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="~/css/dashboard.css" rel="stylesheet" type="text/css" asp-append-version="true" />
 </head>
-<body>
+<body class="bg-light">
     <header>
-        <nav class="navbar px-5  border-2 border-bottom navbar-expand-lg bg-white">
+        <nav class="navbar px-5 border-2 border-bottom navbar-expand-lg bg-white align-center">
             <div class="container-fluid">
-                <a class="navbar-brand " asp-action="Index" asp-controller="Home">
-                    <img src="~/images/Fig56._Patient_site_1.png" class="img-fluid logo" />
-                </a>
-
+                <div class="start-0 btn p-2 mx-3 my-auto">
+                    <img src="../images/Fig56._Patient_site_1.png" class="header-img">
+                </div>
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 </ul>
-                <div class="end-0 my-4 mx-5 position-absolute text-info border-info rounded-3 d-flex">
-                    <h5 class="text-dark align-bottom pt-2 ">
+                <div class="end-0 my-4 text-info border-info rounded-3 d-flex justify-content-center align-items-center">
+                    <h5 class="text-dark">
                         @*collapse*@
                         Welcome <span class="fw-bolder"> @CV.UserName() </span>
                     </h5>
                     <a asp-action="Logout" asp-controller="Login" class="btn btn-outline-info mx-2">Logout</a>
-                    <button class="btn btn-outline-info" onclick="mode()">
-                        <i class="fa fa-moon-o fa-2x text-info"></i>
-                    </button>
+                    <a class ="btn btn-outline-info mx-2">
+                        <i class="fa fa-moon-o text-info"></i>
+                    </a>
                 </div>
             </div>
         </nav>
-        @{
-            if (CV.UserID() != null)
-            {
-                <partial name="../_PartialViews/SubNav" />
-            }
-        }
+        <partial name="../_PartialViews/SubNav" />
     </header>
-    
+
     <main role="main" class="pb-3 container">
         @RenderBody()
     </main>
