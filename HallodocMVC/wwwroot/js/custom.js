@@ -1,9 +1,3 @@
-swal({
-    title: "Information",
-    text: "When submitting a request, you must provide the correct contact information for the patient or the responsibly party. Failure to provide the correct email and phone number will delay service or be declined.",
-    type: "warning",
-    confirmButtonColor: "#0dcaf0",    
-});
 function passtoggle() {
     var x = document.getElementById("floatingPassword");
     if (x.type === "password") {
@@ -18,12 +12,12 @@ function passtoggle() {
     }
 }
 $("#files").change(function () {
-    console.log("function");
     filename = this.files[0].name;
+    console.log(filename);
     $("#choosenfile").text(filename);
 });
-const phoneInputField = document.querySelector("#phone");
-const phoneInput = window.intlTelInput(phoneInputField, {
+const phoneInputField2 = document.querySelector("#phone");
+const phoneInput2 = window.intlTelInput(phoneInputField2, {
     utilsScript:
         "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
 });

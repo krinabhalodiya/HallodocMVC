@@ -50,7 +50,6 @@ namespace HallodocMVC.Controllers
             var Request = new Request();
             var Requestclient = new Requestclient();
             var isexist = _context.Users.FirstOrDefault(x => x.Email == viewpatientcreaterequest.Email);
-
             if (isexist == null)
             {
                 // Aspnetuser
@@ -83,25 +82,25 @@ namespace HallodocMVC.Controllers
             {
                 Request.Userid = isexist.Userid;
             }
-                Request.Firstname = viewpatientcreaterequest.FirstName;
-                Request.Lastname = viewpatientcreaterequest.LastName;
-                Request.Email = viewpatientcreaterequest.Email;
-                Request.Phonenumber = viewpatientcreaterequest.PhoneNumber;
-                Request.Isurgentemailsent = new BitArray(1);
-                Request.Createddate = DateTime.Now;
-                _context.Requests.Add(Request);
-                await _context.SaveChangesAsync();
+            Request.Firstname = viewpatientcreaterequest.FirstName;
+            Request.Lastname = viewpatientcreaterequest.LastName;
+            Request.Email = viewpatientcreaterequest.Email;
+            Request.Phonenumber = viewpatientcreaterequest.PhoneNumber;
+            Request.Isurgentemailsent = new BitArray(1);
+            Request.Createddate = DateTime.Now;
+            _context.Requests.Add(Request);
+            await _context.SaveChangesAsync();
 
-                Requestclient.Requestid = Request.Requestid;
-                Requestclient.Firstname = viewpatientcreaterequest.FirstName;
-                Requestclient.Address = viewpatientcreaterequest.Street;
-                Requestclient.Lastname = viewpatientcreaterequest.LastName;
-                Requestclient.Email = viewpatientcreaterequest.Email;
-                Requestclient.Phonenumber = viewpatientcreaterequest.PhoneNumber;
-                Requestclient.Notes = viewpatientcreaterequest.Symptoms;
+            Requestclient.Requestid = Request.Requestid;
+            Requestclient.Firstname = viewpatientcreaterequest.FirstName;
+            Requestclient.Address = viewpatientcreaterequest.Street;
+            Requestclient.Lastname = viewpatientcreaterequest.LastName;
+            Requestclient.Email = viewpatientcreaterequest.Email;
+            Requestclient.Phonenumber = viewpatientcreaterequest.PhoneNumber;
+            Requestclient.Notes = viewpatientcreaterequest.Symptoms;
 
-                _context.Requestclients.Add(Requestclient);
-                await _context.SaveChangesAsync();
+            _context.Requestclients.Add(Requestclient);
+            await _context.SaveChangesAsync();
 
             if (viewpatientcreaterequest.UploadFile != null)
             {
@@ -109,8 +108,9 @@ namespace HallodocMVC.Controllers
                 string path = Path.Combine(Directory.GetCurrentDirectory(), FilePath);
 
                 if (!Directory.Exists(path))
+                {
                     Directory.CreateDirectory(path);
-
+                }
                 string fileNameWithPath = Path.Combine(path, viewpatientcreaterequest.UploadFile.FileName);
                 viewpatientcreaterequest.UploadImage = "~" + FilePath.Replace("wwwroot\\", "/") + "/" + viewpatientcreaterequest.UploadFile.FileName;
 

@@ -3,7 +3,7 @@
     ViewData["Title"] = "FamilyFriendRequest";
 }
 @model HallodocMVC.Models.ViewDataFamilyFriendRequest
-
+<partial name="../_PartialViews/PartialConformationModel" />
 <div class="container">
     <div class="position-relative">
         <div class="row">
@@ -164,11 +164,11 @@
                         <div class="col-12 border rounded">
                             <div class="d-flex justify-content-between">
                                 <span id="choosenfile" class="p-3">No file chosen</span>
-                                <a class="bg-info btn btn-lg" onclick="document.getElementById('files').click()">
-                                    <label for="files" class="btn text-white">
+                                <a class="btn bg-info btn btn-lg" onclick="document.getElementById('files').click()">
+                                    <span for="files" class="btn text-white">
                                         <i class="fa fa-cloud-upload"></i>
                                         Upload
-                                    </label>
+                                    </span>
                                 </a>
                                 <input asp-for="UploadFile" id="files" type="file" class="d-none">
                             </div>
@@ -179,7 +179,7 @@
                 <!-- cancel submit button -->
                 <div class="row px-3 py-3">
                     <div class="col-12 d-flex justify-content-end">
-                        @* <input value="Submit" type="submit" class="btn btn-info btn-md text-white mx-3"> *@
+                        <input value="Submit" type="submit" class="btn btn-info btn-md text-white mx-3">
                         <button type="reset" class="btn btn-white btn-md text-info border border-info">Cancel</button>
                     </div>
                 </div>
@@ -189,5 +189,3 @@
         
     </div>
 </div>
-
-<script src="~/js/custom.js"></script>
