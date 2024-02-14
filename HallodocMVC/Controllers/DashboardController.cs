@@ -66,10 +66,10 @@ namespace HallodocMVC.Controllers
                 if (!Directory.Exists(path))
                     Directory.CreateDirectory(path);
                 string fileNameWithPath = Path.Combine(path, UploadFile.FileName);
-                UploadImage = "~" + FilePath.Replace("wwwroot\\", "/") + "/" + UploadFile.FileName;
+                UploadImage =UploadFile.FileName;
                 using (var stream = new FileStream(fileNameWithPath, FileMode.Create))
                 {
-                    UploadFile.CopyTo(stream)
+                    UploadFile.CopyTo(stream);
 ;
                 }
                 var requestwisefile = new Requestwisefile

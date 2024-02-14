@@ -2,42 +2,57 @@
     Layout = "_DashboardLayout";
 }
 
+
 <div class="container mb-3">
-    <div class="card bg-transparent border-0 p-2" style="border-radius: 15px;">
-        <div class="card-header d-flex justify-content-between  border-0  bg-transparent p-1  mt-3 mb-2">
-            <div class="text-start">
-                <h5 class="mt-2"> Document</h5>
+    <div class="card bg-transparent border border-0">
+        <div class="col-xl-12 d-flex justify-content-between">
+            <div class="card-header  border-0 bg-transparent p-1 my-1">
+                <div class="text-start">
+                    <h4 class="mt-2 font-weight-bold"><strong>Document</strong></h4>
+                </div>
             </div>
+            <a asp-controller="Dashboard" asp-action="Index" class="btn border border-info bg-light rounded mt-3 mb-1">
+                <i class="fa fa-angle-left text-info align-middle"></i>
+                <span class="text-info">
+                    <b class="align-text-top">&nbsp;&nbsp;Back</b>
+                </span>
+            </a>
         </div>
-        <div class="card-body m-1 shadow" style="border-radius: 15px;">
-            <div class="doc-text-card">Patient name</div>
-            <span class="d-flex align-items-center">
+        <div class="card-body m-1 mb-5 shadow bg-white rounded">
+            <p class="doc-text-card text-secondary">Patient name</p>
+            <div class="d-flex align-items-center">
                 @foreach (var item in ViewBag.requestinfo)
                 {
-                    <div class="Patient-name">@item.Firstname @item.Lastname </div>
-                    @* <div class="doc-text-card mx-2 ">(@item.Confirmationnumber)</div> *@
+                    <h5 class="text-info"><b>@item.Firstname @item.Lastname</b></h5>
+                    <h6 class="doc-text-card mx-2 text-secondary">(@item.Userid)</h6>
                 }
-            </span>
+            </div>
 
-            <div class="doc-text-card mt-2">
+            <div class="doc-text-card mt-2 text-secondary">
                 check here for any files that you or the
                 doctor of yours subsequents requestors have attached for yo to
                 review
             </div>
-            <div class="col-md-12 mt-3">
+            <div class="col-12 mt-4">
                 @foreach (var item in ViewBag.requestinfo)
                 {
                     <form method="post" asp-action="UploadDoc" asp-controller="Dashboard" enctype="multipart/form-data">
-                        <div class="d-flex">
-                            <input class="form-control doc_uploder" id="formFileSm" name="UploadFile" type="file">
-                            <input type="hidden" name="Requestid" value="@item.Requestid" />
-                            <input type="submit" class="btn btn-info btn-submit" value="Upload">
+                        <div class="d-flex justify-content-between bg-light border border-secondary rounded">
+                            <button type="button" id="choosenfile" class="col btn text-start text-secondary" onclick="document.getElementById('files').click()">
+                                Select File
+                            </button>
+                            <input id="files" type="file" class="d-none form-control doc_uploder" name="UploadFile">
+                            <input name="Requestid" value="@item.Requestid" class="d-none"/>
+                            <button type="submit" class="btn btn-info text-white py-2" value="Upload">
+                                <i class="fa fa-cloud-upload"></i>
+                                Upload
+                            </button>
                         </div>
                     </form>
                 }
                 <div class="card-header-2 mt-3 d-flex justify-content-between  border-0  bg-transparent ">
                     <div class="mt-2">
-                        <h6> Document</h6>
+                        <h5><b>Document</b></h5>
                     </div>
                     <div class="text-end">
                         <a class="btn btn-outline-info btn-back text-end" onclick="Downlode_all()">Download all</a>
@@ -53,7 +68,7 @@
                                     </div>
                                 </th>
                                 <th scope="col" class="table-text-header px-3">Document Name</th>
-                                <th scope="col" class="table-text-header  px-3">Uploader</th>
+                                <th scope="col" class="table-text-header px-3">Uploader</th>
                                 <th scope="col" class="table-text-header">Upload date</th>
                                 <th scope="col" class="table-text-header">Action</th>
                             </tr>
@@ -67,15 +82,16 @@
                                             <input class="form-check-input doc-checkbox" type="checkbox" value="" onclick="statusselectall()">
                                         </div>
                                     </td>
-                                    <td class="table-text px-3">@item2.Filename</td>
-                                    <td class="table-text px-3">@item2.</td>
-                                    <td class="table-text px-3">@item2.Createddate</td>
-
-                                    <td class="table-text text-center ">
+                                    <td class="table-text px-3 text-secondary">@item2.Filename</td>
+                                    @foreach(var item3 in ViewBag.requestinfo)
+                                    {
+                                        <td class="table-text px-3 text-secondary">@item3.Firstname</td>
+                                    }
+                                    <td class="table-text px-3 text-secondary">@item2.Createddate</td>
+                                    <td class="table-text text-center">
                                         <a class="btn btn-sm download-link  btn-outline-info document-button" download href="/Upload/@item2.Filename">
                                             <i class="fa fa-cloud-download"></i>
                                         </a>
-
                                     </td>
                                 </tr>
                             }
@@ -87,6 +103,11 @@
     </div>
 </div>
 <script>
+    $("#files").change(function () {
+        filename = this.files[0].name;
+        console.log(filename);
+        $("#choosenfile").text(filename);
+    });
     function statusselectall() {
         var selectAllCheckbox = document.getElementById('selectall');
         var allCheckboxes = document.getElementsByClassName('doc-checkbox');
@@ -98,13 +119,10 @@
                 selectAllCheckbox.checked = false;
                 break;
             }
-
         }
         if (i == allCheckboxes.length) {
             selectAllCheckbox.checked = true;
         }
-
-
     }
     function select_Desectall() {
         var selectAllCheckbox = document.getElementById('selectall');
@@ -114,7 +132,6 @@
             allCheckboxes[i].checked = selectAllCheckbox.checked;
         }
     }
-
     function Downlode_all() {
         var allcheckbox = document.getElementsByClassName('doc-checkbox');
         var alllinks = document.getElementsByClassName('download-link');
@@ -127,5 +144,4 @@
             }
         }
     }
-
 </script>
