@@ -4,17 +4,31 @@ body {
 .hdr {
     box-shadow: 0 0 10px 0;
 }
-
 .header-img {
     height: 70px;
 }
-
 .active {
     color: #8dcaf0 !important;
     font-weight: 600;
     border-bottom: 2px solid #8dcaf0;
 }
-
 .theadbg{
     background-color : lightgray;
+}
+.form-floating .form-control ~ label {
+    color: gray;
+    font-size: small;
+}
+.form-floating .form-control:focus ~ label {
+    color: #0dcaf0;
+}
+.form-floating input:focus, .form-floating textarea:focus {
+    border: 2px solid #0dcaf0 !important;
+}
+.phone .form-control {
+    line-height: 2.6;
+}
+.iti{
+    position: relative;
+    display:block;
 }
