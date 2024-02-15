@@ -24,7 +24,7 @@ namespace HallodocMVC.Controllers
                                    LastName = r.Lastname,
                                    Email = r.Email,
                                    PhoneNumber = r.Mobile,
-                                   //BirthDate = new DateTime((int)r.Intyear, Convert.ToInt32(r.Strmonth.Trim()), (int)r.Intdate)
+                                   BirthDate = new DateTime((int)r.Intyear, Convert.ToInt32(r.Strmonth.Trim()), (int)r.Intdate)
                                })
                                .FirstOrDefault();
             return View(ViewDataPatientRequest);
