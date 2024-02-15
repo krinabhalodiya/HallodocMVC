@@ -28,7 +28,67 @@ body {
 .phone .form-control {
     line-height: 2.6;
 }
-.iti{
-    position: relative;
-    display:block;
+.iti {
+    display: block;
+    width: 100%;
+}
+.divgrpreq {
+    margin-top: 10vh;
+    box-shadow: 0 0 5px 5px rgb(229, 224, 224);
+    margin-bottom: 50px;
+}
+body {
+    font-family: 'Poppins', sans-serif;
+}
+@media only screen and (max-height: 600px) {
+    .divgrpreq {
+        margin-top: 18vh;
+    }
+}
+@media only screen and (max-height: 350px) {
+    .divgrpreq {
+        margin-top: 25vh;
+    }
+}
+.backbtnreq {
+    position: absolute;
+    right: 0.5vw;
+    margin-right: 1vw;
+    margin-top: 2vh;
+}
+.backbtnreq:hover {
+    background-color: white;
+}
+@media only screen and (max-height: 600px) {
+    .backbtnreq {
+        margin-top: 3vh;
+    }
+}
+@media only screen and (max-height: 450px) {
+    .backbtnreq {
+        margin-top: 4vh;
+    }
+}
+.form-floating .form-control ~ label {
+    color: gray;
+    font-size: small;
+}
+.form-floating .form-control:focus ~ label {
+    color: #0dcaf0;
+}
+.form-floating input:focus, .form-floating textarea:focus {
+    border: 2px solid #0dcaf0 !important;
+}
+.txtarea {
+    height: 10vh !important;
+}
+.iti {
+    display: block;
+    width: 100%;
+}
+.phone .form-control {
+    line-height: 2.5;
+}
+.swal-title {
+    font-family: 'Poppins', sans-serif;
 }

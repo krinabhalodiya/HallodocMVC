@@ -47,14 +47,10 @@ namespace HallodocMVC.Controllers
                 return View("../Home/Login");
             }
         }
-
         public IActionResult Logout()
         {
             HttpContext.Session.Clear();
             return RedirectToAction("Index","Home");
         }
-
     }
-
  }
-

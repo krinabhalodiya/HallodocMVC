@@ -13,13 +13,11 @@ namespace HallodocMVC.Controllers
         {
             _context = context;
         }
-
         public async Task<IActionResult> Index()
         {
             if(CV.UserID()!=null)
             {
                 var UserIDForRequest = _context.Users.Where(r => r.Aspnetuserid == CV.UserID()).FirstOrDefault();
-
                 if (UserIDForRequest != null)
                 {
                     List<DataModels.Request> Request = _context.Requests.Where(r => r.Userid == UserIDForRequest.Userid).ToList();
@@ -27,7 +25,6 @@ namespace HallodocMVC.Controllers
 
                     foreach (var request in Request)
                     {
-
                         var doc = _context.Requestwisefiles.Where(r => r.Requestid == request.Requestid).FirstOrDefault();
                         if (doc != null)
                         {
@@ -35,8 +32,7 @@ namespace HallodocMVC.Controllers
                         }
                     }
                     ViewBag.docidlist = ids;
-                    ViewBag.listofrequest = Request;
-                  
+                    ViewBag.listofrequest = Request;  
                 }
                 return View();
             }
@@ -44,18 +40,15 @@ namespace HallodocMVC.Controllers
             {
                 return View("../Home/Index");
             }
-
         }
         public IActionResult DocumentInfo(int? id)
         {
-
             List<Request> Request = _context.Requests.Where(r => r.Requestid == id).ToList();
             ViewBag.requestinfo = Request;
             List<Requestwisefile> DocList = _context.Requestwisefiles.Where(r => r.Requestid == id).ToList();
             ViewBag.DocList = DocList;
             return View("Documentsinfo");
         }
-
         public IActionResult UploadDoc(int Requestid, IFormFile? UploadFile)
         {
             string UploadImage;
@@ -64,13 +57,14 @@ namespace HallodocMVC.Controllers
                 string FilePath = "wwwroot\\Upload";
                 string path = Path.Combine(Directory.GetCurrentDirectory(), FilePath);
                 if (!Directory.Exists(path))
+                {
                     Directory.CreateDirectory(path);
+                }
                 string fileNameWithPath = Path.Combine(path, UploadFile.FileName);
                 UploadImage =UploadFile.FileName;
                 using (var stream = new FileStream(fileNameWithPath, FileMode.Create))
                 {
                     UploadFile.CopyTo(stream);
-;
                 }
                 var requestwisefile = new Requestwisefile
                 {
@@ -81,7 +75,6 @@ namespace HallodocMVC.Controllers
                 _context.Requestwisefiles.Add(requestwisefile);
                 _context.SaveChanges();
             }
-
             return RedirectToAction("Documentinfo", new { id = Requestid });
         }
     }

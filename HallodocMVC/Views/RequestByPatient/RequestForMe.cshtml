@@ -1,0 +1,200 @@
+﻿@{
+    ViewData["Title"] = "PatientRequest";
+    Layout = "_DashboardLayout";
+}
+@model HallodocMVC.Models.ViewDataPatientRequest
+
+<partial name="../_PartialViews/PartialConformationModel" />
+<div class="container">
+    <div class="position-relative">
+        <div class="row">
+            <div class="col-xl-12 text-center">
+                <a asp-controller="Dashboard" asp-action="Index" class="btn btn-outline-info backbtnreq">
+                    <i class="fa fa-angle-left fa-2x text-info align-middle"></i>
+                    <span class="text-info">
+                        <b class="align-text-top">&nbsp;&nbsp;Back</b>
+                    </span>
+                </a>
+            </div>
+        </div>
+        <!-- form -->
+        <form class="form-floating" method="post" asp-action="PostMe" asp-controller="RequestByPatient" enctype="multipart/form-data">
+
+            <div class="divgrpreq mx-xl-4 mx-md-3 mx-sm-2 bg-white rounded">
+
+                <!-- patient Information -->
+                <div class="row p-3">
+                    <div class="col-12">
+                        <h5><b class="">Patient Information</b></h5>
+                    </div>
+                </div>
+                <div class="row p-3">
+                    <div class="col-12">
+                        <div class="form-floating">
+                            <textarea asp-for="Symptoms" class="w-100 form-control txtarea shadow-none" id="floatingInputValue"></textarea>
+                            <label for="floatingInputValue">Enter Brief Details Of Symptoms(Optional)</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row px-3">
+                    <div class="col-md-6 pb-3">
+                        <div class="form-floating">
+                            <input asp-for="FirstName" type="text" class="form-control shadow-none" id="fname" placeholder="First Name">
+                            <label for="fname">First Name</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6 pb-3">
+                        <div class="form-floating">
+                            <input asp-for="LastName" type="text" class="form-control shadow-none" id="lname" placeholder="Last Name">
+                            <label for="lname">Last Name</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6 pb-3">
+                        <div class="form-floating">
+                            <input asp-for="BirthDate" type="date" class="form-control shadow-none" id="dob" placeholder="Date Of Birth">
+                            <label for="dob">Date Of Birth</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Patient contact Information -->
+                <div class="row p-3">
+                    <div class="col-12">
+                        <h5><b>Patient Contact Information</b></h5>
+                    </div>
+                </div>
+                <div class="row px-3">
+                    <div class="col-md-6">
+                        <div class="form-floating pb-3">
+                            <input asp-for="Email" type="text" class="form-control shadow-none" id="email" placeholder="Email">
+                            <label for="email">Email</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6 phone">
+                        <div class="form-floating pb-3">
+                            <input asp-for="PhoneNumber" type="number" class="form-control shadow-none" id="phone">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- username password -->
+                <div class="row px-3">
+                    <div class="col-md-6 pb-3" id="username" style="display:none;">
+                        <div class="form-floating">
+                            <input asp-for="UserName" type="text" class="form-control shadow-none" id="uname" placeholder="Username">
+                            <label for="uname">Username</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6 pb-3" id="password" style="display:none;">
+                        <div class="form-floating">
+                            <input asp-for="PassWord" type="text" class="form-control shadow-none" id="pass" placeholder="Password">
+                            <label for="pass">Password</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Patient Location -->
+                <div class="row p-3">
+                    <div class="col-12">
+                        <h5><b>Patient Location</b></h5>
+                    </div>
+                </div>
+                <div class="row px-3">
+                    <div class="col-md-6 pb-3">
+                        <div class="form-floating">
+                            <input asp-for="Street" type="text" class="form-control shadow-none" id="fname" placeholder="First Name">
+                            <label for="fname">Street</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6 pb-3">
+                        <div class="form-floating">
+                            <input asp-for="City" type="text" class="form-control shadow-none" id="lname" placeholder="Last Name">
+                            <label for="lname">City</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6 pb-3">
+                        <div class="form-floating">
+                            <input asp-for="State" type="text" class="form-control shadow-none" id="lname" placeholder="Last Name">
+                            <label for="lname">State</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6 pb-3">
+                        <div class="form-floating">
+                            <input asp-for="ZipCode" type="text" class="form-control shadow-none" id="lname" placeholder="Last Name">
+                            <label for="lname">Zip Code</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-floating">
+                            <input asp-for="RoomSite" type="text" class="form-control shadow-none" id="lname" placeholder="Last Name">
+                            <label for="lname">Room # / Suits (Optional)</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Upload Files -->
+                <div class="row p-3">
+                    <div class="col-12">
+                        <h5><b>(Optional) Upload Photo or Document</b></h5>
+                    </div>
+                </div>
+                <div class="row px-3 pb-3">
+                    <div>
+                        <div class="col-12 border rounded">
+                            <div class="d-flex justify-content-between">
+                                <span id="choosenfile" class="p-3">No file chosen</span>
+                                <a class="btn bg-info btn btn-lg" onclick="document.getElementById('files').click()">
+                                    <span for="files" class="btn text-white">
+                                        <i class="fa fa-cloud-upload"></i>
+                                        Upload
+                                    </span>
+                                </a>
+                                <input asp-for="UploadFile" id="files" type="file" class="d-none">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- cancel submit button -->
+                <div class="row px-3 py-3">
+                    <div class="col-12 d-flex justify-content-end">
+                        <input type="Submit" class="btn btn-info btn-md text-white mx-3">
+                        <button type="reset" class="btn btn-white btn-md text-info border border-info">Cancel</button>
+                    </div>
+                </div>
+                <!-- form end -->
+            </div>
+        </form>
+        <!-- form end -->
+    </div>
+</div>
+
+
+
+<script type="text/javascript">
+    $(function () {
+        $("#email").focusout(function () {
+            var email = $("#email").val();
+            $.ajax({
+                type: "POST",
+                url: '@Url.Action("CheckEmail")?email=' + email,
+                cache: false,
+                success: function (response) {
+                    var flag = response.isAspnetuser;
+                    if (flag) {
+                        // Show the username and password fields
+                        $("#username").show();
+                        $("#password").show();
+                    } else {
+                        $("#username").hide();
+                        $("#password").hide();
+                    }
+                },
+                error: function () {
+                    alert("Error while checking email.");
+                }
+            });
+        });
+    });
+
+</script>

@@ -18,6 +18,7 @@
         public string RoomSite { get; set; }
         public string? UploadImage { get; set; }
         public IFormFile? UploadFile { get; set; }
+        public string FF_RelationWithPatient { get; set; }
 
     }
 }
