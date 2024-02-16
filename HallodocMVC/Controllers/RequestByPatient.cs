@@ -46,10 +46,10 @@ namespace HallodocMVC.Controllers
                 Request.Requesttypeid = 2;
                 var isexist = _context.Users.FirstOrDefault(x => x.Email == viewpatientrequestforme.Email);
                 Request.Userid = isexist.Userid;
-                Request.Firstname = viewpatientrequestforme.FirstName;
-                Request.Lastname = viewpatientrequestforme.LastName;
-                Request.Email = viewpatientrequestforme.Email;
-                Request.Phonenumber = viewpatientrequestforme.PhoneNumber;
+                Request.Firstname = isexist.Firstname;
+                Request.Lastname = isexist.Lastname;
+                Request.Email = isexist.Email;
+                Request.Phonenumber = isexist.Mobile;
                 Request.Isurgentemailsent = new BitArray(1);
                 Request.Createddate = DateTime.Now;
                 _context.Requests.Add(Request);
@@ -104,37 +104,37 @@ namespace HallodocMVC.Controllers
 
 
         #region PostSomeoneElseAsync
-        public async Task<IActionResult> PostSomeoneElse(ViewDataPatientRequest viewpatientrequestforme)
+        public async Task<IActionResult> PostSomeoneElse(ViewDataPatientRequest viewpatientrequestforelse)
         {
-            if (ModelState.IsValid)
-            {
+            //if (ModelState.IsValid)
+            //{
                 var Request = new Request();
                 var Requestclient = new Requestclient();
-
+                var isexist = _context.Users.FirstOrDefault(x =>Convert.ToString(x.Aspnetuserid) == (CV.UserID()));
                 Request.Requesttypeid = 2;
-                Request.Userid = Convert.ToInt32(CV.UserID());
-                Request.Firstname = viewpatientrequestforme.FirstName;
-                Request.Lastname = viewpatientrequestforme.LastName;
-                Request.Email = viewpatientrequestforme.Email;
-                Request.Phonenumber = viewpatientrequestforme.PhoneNumber;
-                Request.Relationname = viewpatientrequestforme.FF_RelationWithPatient;
+                //Request.Userid = isexist.Userid;
+                Request.Firstname = isexist.Firstname;
+                Request.Lastname = isexist.Lastname;
+                Request.Email = isexist.Email;
+                Request.Phonenumber = isexist.Mobile;
+                Request.Relationname = viewpatientrequestforelse.FF_RelationWithPatient;
                 Request.Isurgentemailsent = new BitArray(1);
                 Request.Createddate = DateTime.Now;
                 _context.Requests.Add(Request);
                 await _context.SaveChangesAsync();
 
                 Requestclient.Requestid = Request.Requestid;
-                Requestclient.Firstname = viewpatientrequestforme.FirstName;
-                Requestclient.Address = viewpatientrequestforme.Street;
-                Requestclient.Lastname = viewpatientrequestforme.LastName;
-                Requestclient.Email = viewpatientrequestforme.Email;
-                Requestclient.Phonenumber = viewpatientrequestforme.PhoneNumber;
+                Requestclient.Firstname = viewpatientrequestforelse.FirstName;
+                Requestclient.Address = viewpatientrequestforelse.Street;
+                Requestclient.Lastname = viewpatientrequestforelse.LastName;
+                Requestclient.Email = viewpatientrequestforelse.Email;
+                Requestclient.Phonenumber = viewpatientrequestforelse.PhoneNumber;
 
                 _context.Requestclients.Add(Requestclient);
                 await _context.SaveChangesAsync();
 
 
-                if (viewpatientrequestforme.UploadFile != null)
+                if (viewpatientrequestforelse.UploadFile != null)
                 {
                     string FilePath = "wwwroot\\Upload";
                     string path = Path.Combine(Directory.GetCurrentDirectory(), FilePath);
@@ -142,29 +142,29 @@ namespace HallodocMVC.Controllers
                     if (!Directory.Exists(path))
                         Directory.CreateDirectory(path);
 
-                    string fileNameWithPath = Path.Combine(path, viewpatientrequestforme.UploadFile.FileName);
-                    viewpatientrequestforme.UploadImage = viewpatientrequestforme.UploadFile.FileName;
+                    string fileNameWithPath = Path.Combine(path, viewpatientrequestforelse.UploadFile.FileName);
+                    viewpatientrequestforelse.UploadImage = viewpatientrequestforelse.UploadFile.FileName;
 
                     using (var stream = new FileStream(fileNameWithPath, FileMode.Create))
                     {
-                        viewpatientrequestforme.UploadFile.CopyTo(stream);
+                        viewpatientrequestforelse.UploadFile.CopyTo(stream);
                     }
 
                     var requestwisefile = new Requestwisefile
                     {
                         Requestid = Request.Requestid,
-                        Filename = viewpatientrequestforme.UploadImage,
+                        Filename = viewpatientrequestforelse.UploadImage,
                         Createddate = DateTime.Now,
                     };
                     _context.Requestwisefiles.Add(requestwisefile);
                     _context.SaveChanges();
                 }
-            }
-            else
-            {
-                return View("../RequestByPatient/SubmitForSomeoneelse", viewpatientrequestforme);
-            }
-            return View();
+            //}
+            //else
+            //{
+            //    return View("../Views/RequestByPatient/SubmitForSomeoneelse", viewpatientrequestforme);
+            //}
+            return RedirectToAction("Index", "Dashboard");
         }
         #endregion
     }

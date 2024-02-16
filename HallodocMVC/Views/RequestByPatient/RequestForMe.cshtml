@@ -76,23 +76,6 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- username password -->
-                <div class="row px-3">
-                    <div class="col-md-6 pb-3" id="username" style="display:none;">
-                        <div class="form-floating">
-                            <input asp-for="UserName" type="text" class="form-control shadow-none" id="uname" placeholder="Username">
-                            <label for="uname">Username</label>
-                        </div>
-                    </div>
-                    <div class="col-md-6 pb-3" id="password" style="display:none;">
-                        <div class="form-floating">
-                            <input asp-for="PassWord" type="text" class="form-control shadow-none" id="pass" placeholder="Password">
-                            <label for="pass">Password</label>
-                        </div>
-                    </div>
-                </div>
-
                 <!-- Patient Location -->
                 <div class="row p-3">
                     <div class="col-12">
@@ -168,33 +151,3 @@
         <!-- form end -->
     </div>
 </div>
-
-
-
-<script type="text/javascript">
-    $(function () {
-        $("#email").focusout(function () {
-            var email = $("#email").val();
-            $.ajax({
-                type: "POST",
-                url: '@Url.Action("CheckEmail")?email=' + email,
-                cache: false,
-                success: function (response) {
-                    var flag = response.isAspnetuser;
-                    if (flag) {
-                        // Show the username and password fields
-                        $("#username").show();
-                        $("#password").show();
-                    } else {
-                        $("#username").hide();
-                        $("#password").hide();
-                    }
-                },
-                error: function () {
-                    alert("Error while checking email.");
-                }
-            });
-        });
-    });
-
-</script>

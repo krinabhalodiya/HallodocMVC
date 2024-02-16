@@ -20,7 +20,7 @@ namespace HallodocMVC.Controllers
                 var UserIDForRequest = _context.Users.Where(r => r.Aspnetuserid == CV.UserID()).FirstOrDefault();
                 if (UserIDForRequest != null)
                 {
-                    List<DataModels.Request> Request = _context.Requests.Where(r => r.Userid == UserIDForRequest.Userid).ToList();
+                    List<Request> Request = _context.Requests.Where(r => r.Userid == UserIDForRequest.Userid).ToList();
                     List<int> ids = new List<int>();
 
                     foreach (var request in Request)
