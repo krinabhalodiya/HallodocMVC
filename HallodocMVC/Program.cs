@@ -8,6 +8,10 @@ builder.Services.AddDbContext<HalloDocContext>();
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddSession();
 AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+var emailConfig = builder.Configuration
+        .GetSection("EmailConfiguration")
+        .Get<EmailConfiguration>();
+builder.Services.AddSingleton(emailConfig);
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

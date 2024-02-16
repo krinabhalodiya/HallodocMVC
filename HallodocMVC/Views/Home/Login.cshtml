@@ -20,6 +20,7 @@
     </div>
     @ViewData["error"]
     <form asp-action="Validate" asp-controller="Login" method="post">
+        @TempData["emailmassage"]
         <div class="row my-4">
             <div class="col-xl-4 col-md-8 maindiv mx-auto">
                 <div class="form-floating email">

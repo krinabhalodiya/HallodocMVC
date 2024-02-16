@@ -12,10 +12,11 @@ namespace HallodocMVC.Controllers
     public class PatientRequestController : Controller
     {
         private readonly HalloDocContext _context;
-
-        public PatientRequestController(HalloDocContext context)
+        private readonly EmailConfiguration _emailConfig;
+        public PatientRequestController(HalloDocContext context, EmailConfiguration emailConfig)
         {
             _context = context;
+            _emailConfig = emailConfig;
         }
 
         public IActionResult Index()

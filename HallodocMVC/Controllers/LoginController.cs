@@ -1,6 +1,7 @@
 ﻿using System.Data;
 using HallodocMVC.DataContext;
 using HallodocMVC.DataModels;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Npgsql;
@@ -16,12 +17,17 @@ namespace HallodocMVC.Controllers
         }
         public IActionResult Index()
         {
+            
             return View("../Home/Login");
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Validate(string Email,string Passwordhash)
         {
+
+
+            
+
             NpgsqlConnection connection = new NpgsqlConnection("Server=localhost;Database=HalloDoc;User Id=postgres;Password=Krina@2483;Include Error Detail=True");
             string Query = "SELECT * FROM  aspnetusers where email=@Email and passwordhash=@Passwordhash";
             connection.Open();

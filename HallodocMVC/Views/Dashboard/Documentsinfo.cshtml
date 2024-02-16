@@ -44,7 +44,7 @@
                             <input name="Requestid" value="@item.Requestid" class="d-none"/>
                             <button type="submit" class="btn btn-info text-white py-2" value="Upload">
                                 <i class="fa fa-cloud-upload"></i>
-                                Upload
+                                <span class="d-none d-sm-inline">Upload</span>
                             </button>
                         </div>
                     </form>
@@ -54,10 +54,15 @@
                         <h5><b>Document</b></h5>
                     </div>
                     <div class="text-end">
-                        <a class="btn border-info text-info btn-back text-end" onclick="Downlode_all()">Download all</a>
+                        <a class="d-block d-sm-none btn border border-info text-info" onclick="Download_all()">
+                            <i class="fa-solid fa-cloud-arrow-down"></i>
+                        </a>
+                        <a class="d-none d-sm-block btn border border-info text-info" onclick="Download_all()">
+                            Download All
+                        </a>
                     </div>
                 </div>
-                <div class="table-responsive mt-3 mb-0">
+                <div class="d-none d-sm-block table-responsive mt-3 mb-0">
                     <table class="table mb-0">
                         <thead class="border-0">
                             <tr class="table-secondary">
@@ -97,6 +102,33 @@
                         </tbody>
                     </table>
                 </div>
+
+                <!--Mobile screen View-->
+                <div class="d-block d-sm-none border-top my-2">
+                    @foreach (var item2 in ViewBag.DocList)
+                    {
+                        <div class="border-bottom">
+                            <div class="d-inline-flex my-2">
+                                <div class="form-check">
+                                    <input class="form-check-input doc-checkbox" type="checkbox" onclick="statusselectall()">
+                                </div>
+                                <div>
+                                    <small>@item2.Filename</small>
+                                </div>
+                            </div>
+                            <div class="d-flex flex-column">
+                                <label class="text-break"><small>@item2</small></label>
+                                <label><small>@item2.Createddate.ToString("MMM d , yyyy")</small></label>
+                            </div>
+                            <div class="mb-3">
+                                <a class="btn btn-sm download-link btn-outline-info document-button" download href="~/Upload/@item2.Filename">
+                                    <i class="fa fa-cloud-download"></i>
+                                </a>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <!--End Mobile screen View-->
             </div>
         </div>
     </div>
