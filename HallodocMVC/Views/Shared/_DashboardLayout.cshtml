@@ -16,7 +16,7 @@
 <body class="bg-light">
     <header class="bg-white shadow">
         <div class="d-flex justify-content-between rounded-0 py-2 mx-3">
-            <i class="fa fa-solid fa-bars text-info border rounded border-info d-block d-sm-none align-self-center my-3 p-2"></i>
+            <i class="fa fa-solid fa-bars text-info border rounded border-info d-block d-sm-none align-self-center my-3 p-2" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample"></i>
             <img class="img-fluid img-responsive header-img" src="~/images/Fig56._Patient_site_1.png" />
             <div class="d-inline-flex align-items-center p-3">
                 <label class="d-none d-sm-block">Welcome <strong>@CV.UserName()</strong></label>
@@ -25,9 +25,23 @@
                 <a href=""><i class="fa fa-moon text-info border rounded border-info my-3 p-2"></i></a>
             </div>
         </div>
-        
-    <partial name="../_PartialViews/SubNav" />
+
+        <partial name="../_PartialViews/SubNav" />
     </header>
+
+    <div class="offcanvas offcanvas-start w-50" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasExampleLabel">Welcome <strong>@CV.UserName()</strong></h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><a asp-controller="Dashboard" asp-action="Index" class="text-decoration-none text-dark">Dashboard</a></li>
+                <li class="list-group-item"><a asp-controller="Profile" asp-action="Index" class="text-decoration-none text-dark">Profile</a></li>
+                <li class="list-group-item"><a class="text-decoration-none text-dark" href="#">Agreement</a></li>
+            </ul>
+        </div>
+    </div>
 
     <main role="main" class="pb-3 container-fluid px-5">
         @RenderBody()
