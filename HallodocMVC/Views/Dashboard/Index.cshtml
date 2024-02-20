@@ -1,15 +1,11 @@
 ﻿@{
     Layout = "_DashboardLayout";
 }
-
 @using Microsoft.AspNetCore.Http
 @inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
-
 @{
     var userId = HttpContextAccessor.HttpContext.Session.GetString("UserID");
 }
-
-
 <partial name="../_PartialViews/SubmitRequestModel"/>
 
 <div class="justify-content-between d-flex mt-5 position-relative ">
@@ -23,7 +19,6 @@
     <div class="d-flex justify-content-end mx-2 px-3">
         <!-- Button trigger modal -->
         <a class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#requestBackdrop"><i class="d-block d-sm-none fa fa-solid fa-plus text-info border rounded border-info my-3 p-2"></i></a>
-
         <button type="button" class="btn btn-outline-info d-none d-sm-block " data-bs-toggle="modal" data-bs-target="#requestBackdrop">
             Create New Request
         </button>
@@ -54,8 +49,7 @@
                                 }
                             }
                         </td>
-                    </tr>
-                    
+                    </tr>   
                 }
             </tbody>
         </table>
@@ -63,48 +57,47 @@
 
         <!--Mobile screen view-->
         <div class="d-block d-sm-none">
-            @foreach (var item in ViewBag.listofrequest)
-            {
-                <div class="accordion accordion-flush" id="accordionFlushExample">
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="flush-headingOne">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-@item.Requestid" aria-expanded="false" aria-controls="flush-collapseOne">
-                                <i class="fa-solid fa-clock pe-2 text-info"></i>
-                                <strong>Created Date : </strong>
-                                @item.Createddate.ToString("MMM d, yyyy")
-                            </button>
-                        </h2>
-                        <div id="flush-@item.Requestid" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                            <div class="accordion-body">
-                                <div class="mb-3">
-                                    <i class="fa-solid fa-user text-info border border-info rounded-circle p-2"></i>
-                                    <strong class="px-1">Provider : </strong>
-                                    @*@item.Status*@
-                                </div>
-                                <div class="mb-3">
-                                    <i class="fa-solid fa-check text-info border border-info rounded-circle p-2"></i>
-                                    <strong class="px-1">Current Status : </strong>
-                                    @item.Status
-                                </div>
-                                <div>
-                                    @{
-                                        if (ViewBag.docidlist.Contains(item.Requestid))
-                                        {
-                                            <a asp-action="ViewDocuments" asp-controller="PatientDashboard" asp-route-id="@item.Requestid" class="btn btn-outline-info btn-sm document-button shadow-none col-12">
-                                                Document
-                                                <i class="fa-solid fa-download px-2"></i>
-                                            </a>
+                <div class="accordion" id="accordionFlushExample">
+                    @foreach (var item in ViewBag.listofrequest)
+                    {
+                        <div class="accordion-item">
+                        <h2 class="accordion-header" id="flush-heading-@item.Requestid">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-@item.Requestid" aria-expanded="false" aria-controls="flush-collapseOne">
+                                    <i class="fa-solid fa-clock pe-2 text-info"></i>
+                                    <strong>Created Date : </strong>
+                                    @item.Createddate.ToString("MMM d, yyyy")
+                                </button>
+                            </h2>
+                        <div id="flush-@item.Requestid" class="accordion-collapse collapse" aria-labelledby="flush-heading-@item.Requestid" data-bs-parent="#accordionFlushExample">
+                                <div class="accordion-body">
+                                    <div class="mb-3">
+                                        <i class="fa-solid fa-user text-info border border-info rounded-circle p-2"></i>
+                                        <strong class="px-1">Provider : </strong>
+                                        @*@item.Status*@
+                                    </div>
+                                    <div class="mb-3">
+                                        <i class="fa-solid fa-check text-info border border-info rounded-circle p-2"></i>
+                                        <strong class="px-1">Current Status : </strong>
+                                        @item.Status
+                                    </div>
+                                    <div>
+                                        @{
+                                            if (ViewBag.docidlist.Contains(item.Requestid))
+                                            {
+                                                <a asp-action="DocumentInfo" asp-controller="Dashboard" asp-route-id="@item.Requestid" class="btn btn-outline-info btn-sm document-button shadow-none col-12">
+                                                    Document
+                                                    <i class="fa-solid fa-download px-2"></i>
+                                                </a>
+                                            }
                                         }
-                                    }
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    }
                 </div>
-            }
         </div>
         <!--End Mobile screen view-->
     </div>
-
 </div>
 <script src="~/js/site.js"></script>
