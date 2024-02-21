@@ -73,7 +73,7 @@ namespace HallodocMVC.Controllers
                 await _context.SaveChangesAsync();
             }
 
-                Request.Requesttypeid = 2;
+                Request.Requesttypeid = 1;
                 Request.Status = 1;
 
             if (isexist == null)

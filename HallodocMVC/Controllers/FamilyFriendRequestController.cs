@@ -22,7 +22,7 @@ namespace HallodocMVC.Controllers
         {
             var Request = new Request
             {
-                Requesttypeid = 3,
+                Requesttypeid = 2,
                 Status = 1,
                 Firstname = viewDataFamilyFriendRequest.FF_FirstName,
                 Lastname = viewDataFamilyFriendRequest.FF_LastName,

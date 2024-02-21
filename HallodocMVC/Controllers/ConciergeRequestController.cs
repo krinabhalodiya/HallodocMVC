@@ -35,7 +35,6 @@ namespace HallodocMVC.Controllers
             await _context.SaveChangesAsync();
             int id1 = Concierge.Conciergeid;
 
-
             Request.Requesttypeid = 4;
             Request.Status = 1;
             Request.Firstname = viewdata.FirstName;

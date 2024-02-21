@@ -32,30 +32,34 @@
                             <input asp-for="FF_FirstName" type="text" class="form-control shadow-none" id="fname" placeholder="First Name">
                             <label for="fname">Your First Name</label>
                         </div>
-                        
+                        <span asp-validation-for="FF_FirstName" class="text-danger"></span>
                      </div>
                     <div class="col-md-6 pb-3">
                         <div class="form-floating">
                             <input asp-for="FF_LastName" type="text" class="form-control shadow-none" id="lname" placeholder="Last Name">
                             <label for="lname">Your Last Name</label>
                         </div>
+                        <span asp-validation-for="FF_LastName" class="text-danger"></span>
                     </div>
                     <div class="col-md-6 phone pb-3">
                         <span class="form-floating">
                             <input asp-for="FF_PhoneNumber" type="number" class="form-control shadow-none" id="phone">
                         </span>
+                        <span asp-validation-for="FF_PhoneNumber" class="text-danger"></span>
                     </div>
                     <div class="col-md-6 pb-3">
                         <div class="form-floating">
                             <input asp-for="FF_Email" type="text" class="form-control shadow-none" id="lname" placeholder="Last Name">
                             <label for="lname">Your Email</label>
                         </div>
+                        <span asp-validation-for="FF_Email" class="text-danger"></span>
                     </div>
                     <div class="col-md-6">
                         <div class="form-floating">
                             <input asp-for="FF_RelationWithPatient" type="text" class="form-control shadow-none" id="lname" placeholder="Last Name">
                             <label for="lname">Relation With Patient</label>
                         </div>
+                        <span asp-validation-for="FF_RelationWithPatient" class="text-danger"></span>
                     </div>
                 </div>
 
@@ -71,26 +75,30 @@
                             <textarea asp-for="Symptoms" class="w-100 form-control txtarea shadow-none" id="floatingInputValue"></textarea>
                             <label for="floatingInputValue">Enter Brief Details Of Symptoms(Optional)</label>
                         </div>
+                        <span asp-validation-for="Symptoms" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="row px-3">
-                    <div class="col-md-6">
-                        <div class="form-floating pb-3">
+                    <div class="col-md-6 pb-3">
+                        <div class="form-floating">
                             <input asp-for="FirstName" type="text" class="form-control shadow-none" id="fname" placeholder="First Name">
                             <label for="fname">First Name</label>
                         </div>
+                        <span asp-validation-for="FirstName" class="text-danger"></span>
                     </div>
                     <div class="col-md-6 pb-3">
                         <div class="form-floating">
                             <input asp-for="LastName" type="text" class="form-control shadow-none" id="lname" placeholder="Last Name">
                             <label for="lname">Last Name</label>
                         </div>
+                        <span asp-validation-for="LastName" class="text-danger"></span>
                     </div>
                     <div class="col-md-6 pb-3">
                         <div class="form-floating">
                             <input asp-for="BirthDate" type="date" class="form-control shadow-none" id="dob" placeholder="Date Of Birth">
                             <label for="dob">Date Of Birth</label>
                         </div>
+                        <span asp-validation-for="BirthDate" class="text-danger"></span>
                     </div>
                 </div>
 
@@ -106,11 +114,13 @@
                             <input asp-for="Email" type="text" class="form-control shadow-none" id="email" placeholder="Email">
                             <label for="email">Email</label>
                         </div>
+                        <span asp-validation-for="Email" class="text-danger"></span>
                     </div>
                     <div class="col phone">
                         <div class="form-floating">
                             <input asp-for="PhoneNumber" type="number" class="form-control shadow-none" id="phone1">
                         </div>
+                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
                     </div>
                 </div>
 
@@ -126,24 +136,28 @@
                             <input asp-for="Street" type="text" class="form-control shadow-none" id="fname" placeholder="First Name">
                             <label for="fname">Street</label>
                         </div>
+                        <span asp-validation-for="Street" class="text-danger"></span>
                     </div>
                     <div class="col-md-6 pb-3">
                         <div class="form-floating">
                             <input asp-for="City" type="text" class="form-control shadow-none" id="lname" placeholder="Last Name">
                             <label for="lname">City</label>
                         </div>
+                        <span asp-validation-for="City" class="text-danger"></span>
                     </div>
                     <div class="col-md-6 pb-3">
                         <div class="form-floating">
                             <input asp-for="State" type="text" class="form-control shadow-none" id="lname" placeholder="Last Name">
                             <label for="lname">State</label>
                         </div>
+                        <span asp-validation-for="State" class="text-danger"></span>
                     </div>
                     <div class="col-md-6 pb-3">
                         <div class="form-floating">
                             <input asp-for="ZipCode" type="text" class="form-control shadow-none" id="lname" placeholder="Last Name">
                             <label for="lname">Zip Code</label>
                         </div>
+                        <span asp-validation-for="ZipCode" class="text-danger"></span>
                     </div>
                     <div class="col-md-6">
                         <div class="form-floating">
