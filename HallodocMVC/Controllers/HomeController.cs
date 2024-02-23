@@ -62,26 +62,40 @@ namespace HallodocMVC.Controllers
 
         }
         [HttpPost]
-        public IActionResult SavePassword(string email, string Password)
+        public bool ArePasswordsEqual(string password, string repassword)
+        {
+            return password == repassword;
+        }
+
+        public IActionResult SavePassword(ResetPass rp)
         {
             //var hasher = new PasswordHasher<string>();
             //string hashedPassword = hasher.HashPassword(null, Password);
-
-            var aspnetuser = _context.Aspnetusers.FirstOrDefault(m => m.Email == email);
-            if (aspnetuser != null)
+            /*if (!ArePasswordsEqual(Password, confirmpassword))
             {
-                aspnetuser.Passwordhash = Password;
-                _context.Aspnetusers.Update(aspnetuser);
-                _context.SaveChangesAsync();
-
-                TempData["emailmassage"] = "Your password is changed!!";
-                return RedirectToAction("Index", "Login");
-            }
-            else
-            {
-                TempData["emailmassage"] = "Email is not registered!!";
+                TempData["PasswordCompare"] = "Password and Confirm Password must be equal!!";
                 return View("ResetPassword");
             }
+            else
+            {*/
+                var aspnetuser = _context.Aspnetusers.FirstOrDefault(m => m.Email == rp.email);
+                if (aspnetuser != null)
+                {
+                    aspnetuser.Passwordhash = rp.Password;
+                    _context.Aspnetusers.Update(aspnetuser);
+                    _context.SaveChangesAsync();
+
+                    TempData["emailmassage"] = "Your password is changed!!";
+                   
+                }
+                return RedirectToAction("Index", "Login");
+            /*else
+            {
+                TempData["PasswordCompare"] = "Password and Confirm Password must be equal!!";
+                TempData["emailmassage"] = "Email is not registered!!";
+                return RedirectToAction("resetpassword", "Home");
+            }*/
+            /*}*/
         }
         public async Task<IActionResult> resetEmailAsync(string Email)
         {
@@ -136,12 +150,12 @@ namespace HallodocMVC.Controllers
 
                     smtpClient.Send(message);
                 }
-                ViewData["EmailCheck"] = "Your ID Pass Send In Your Mail";
+                TempData["EmailCheck"] = "Your ID Pass Send In Your Mail";
             }
             else
             {
-                ViewData["EmailCheck"] = "Your Email Is not registered";
-                return View("ResetPassword");
+                TempData["EmailCheck"] = "Your Email Is not registered";
+                return RedirectToAction("Forgotpass", "Home");
             }
 
 

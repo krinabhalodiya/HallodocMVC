@@ -17,7 +17,6 @@
             }
             return decrypted;
         }
-
         public string EnryptString(string strEncrypted)
         {
             byte[] b = System.Text.ASCIIEncoding.ASCII.GetBytes(strEncrypted);
@@ -30,7 +29,6 @@
             string dateString = date.ToString("yyyy-MM-ddTHH:mm:ss");
             return data.EnryptString(dateString);
         }
-
         public  DateTime DecryptDate(string encryptedDate)
         {
             Encyptdecypt data=new Encyptdecypt();

@@ -20,6 +20,7 @@
     <form method="post" asp-action="resetEmail" asp-controller="Home">
         <div class="row my-4">
             <div class="col-xl-4 col-md-8 maindiv mx-auto">
+                @TempData["EmailCheck"]
                 <div class="form-floating email" asp-action="resetEmail" asp-controller="Home">
                     <input type="text" class="form-control shadow-none" id="floatingInputValue" name="Email" placeholder="Email">
                     <label for="floatingInputValue colour-info">Email</label>

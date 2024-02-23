@@ -50,16 +50,17 @@
                     </form>
                 }
                 <div class="card-header-2 mt-3 d-flex justify-content-between  border-0  bg-transparent ">
-                    <div class="mt-2">
-                        <h5><b>Document</b></h5>
+                    <div class="col-5 mt-2 d-flex justify-content-between">
+                        <input class="d-block d-sm-none form-check-input " type="checkbox" id="selectall" onchange="select_Desectall()">
+                        <h5 class="pl-2"><b>  Document</b></h5>
                     </div>
                     <div class="text-end">
-                        <a class="d-block d-sm-none btn border border-info text-info" onclick="Download_all()">
+                        <button class="d-block d-sm-none btn border border-info text-info" onclick="Download_all()">
                             <i class="fa-solid fa-cloud-arrow-down"></i>
-                        </a>
-                        <a class="d-none d-sm-block btn border border-info text-info" onclick="Download_all()">
+                        </button>
+                        <button class="d-none d-sm-block btn border border-info text-info" onclick="Download_all()">
                             Download All
-                        </a>
+                        </button>
                     </div>
                 </div>
                 <div class="d-none d-sm-block table-responsive mt-3 mb-0">
@@ -102,7 +103,6 @@
                         </tbody>
                     </table>
                 </div>
-
                 <!--Mobile screen View-->
                 <div class="d-block d-sm-none border-top my-2">
                     @foreach (var item2 in ViewBag.DocList)
@@ -163,7 +163,7 @@
             allCheckboxes[i].checked = selectAllCheckbox.checked;
         }
     }
-    function Downlode_all() {
+    function Download_all() {
         var allcheckbox = document.getElementsByClassName('doc-checkbox');
         var alllinks = document.getElementsByClassName('download-link');
         console.log(alllinks.length);
